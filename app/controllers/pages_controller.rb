@@ -5,12 +5,13 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
   
   def index 
-    @tweets = {}
+    
   end
   
   def update
-    handle = params[:handle];
-    @tweets = get_user_tweets handle
+    @handle = params[:handle];
+    @tweets = get_user_tweets @handle
+
     respond_to do |format|
       format.js
     end

@@ -1,3 +1,4 @@
+<% if @tweets %>
 $('#display_tweets').slideUp(function() {
   $('#display_tweets').html('<%= escape_javascript(render partial: 'tweets', locals: {tweets: @tweets}) %>').slideDown();
   
@@ -7,7 +8,6 @@ $('#display_tweets').slideUp(function() {
     $(t).html(parseTwit($(t).text()));
   });
 });
-
 
 var parseTwit = function(str) {
  //parse URL
@@ -26,3 +26,7 @@ var parseTwit = function(str) {
  }); 
  return str;
 };
+
+<% else %>
+  $('#display_tweets').html("<div class=\"text-warning\">@<%= @handle %> is not a valid twitter account :(</div>")
+<% end %>
