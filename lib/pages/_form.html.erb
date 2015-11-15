@@ -1,0 +1,9 @@
+<%= form_tag("/update", method: "get", :id => 'creep', remote:true) do %>
+  <div>
+    <%= label_tag(:handle, "Enter a twitter handle to creep their tweets:") %>
+  </div>
+  <div>
+    <%= text_field_tag(:handle) %>
+    <%= submit_tag("Creep") %>
+  </div>
+<% end %>
