@@ -1,4 +1,4 @@
-<% if @tweets %>
+<% unless @tweets.nil? || @tweets.empty? %>
 <div id="tweet_list">
 <% @tweets.each do |tweet| %>
   <% if tweet.is_a? Twitter::Tweet %>
@@ -26,4 +26,6 @@
   <% end %>
 <% end %>
 </div>
+<% else %>
+ <div class="text-warning">@<%= @handle %> hasn't tweeted yet :(</div>
 <% end %>

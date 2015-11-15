@@ -5,11 +5,11 @@ $('#display_tweets').slideUp(function() {
   var tweetText = $('.tweet_text');
 
   $.each(tweetText, function(i, t){
-    $(t).html(parseTwit($(t).text()));
+    $(t).html(parseTweet($(t).text()));
   });
 });
 
-var parseTwit = function(str) {
+var parseTweet = function(str) {
  //parse URL
  str = str.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g,function(s){  
   return s.link(s);
