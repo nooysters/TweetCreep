@@ -1,16 +1,15 @@
-$('#display_tweets').slideUp(function(){
+$('#display_tweets').slideUp(function() {
   $('#display_tweets').html('<%= escape_javascript(render partial: 'tweets', locals: {tweets: @tweets}) %>').slideDown();
   
   var tweetText = $('.tweet_text');
-  console.log(tweetText);
+
   $.each(tweetText, function(i, t){
     $(t).html(parseTwit($(t).text()));
   });
 });
 
 
-var parseTwit = function(str)
-{
+var parseTwit = function(str) {
  //parse URL
  str = str.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g,function(s){  
   return s.link(s);
