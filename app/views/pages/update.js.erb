@@ -22,7 +22,7 @@ var parseTwit = function(str) {
  //parse hashtag
  str = str.replace(/[#]+[A-Za-z0-9_]+/g,function(s){
   var hashtag = s.replace('#','');
-  return s.link("http://search.twitter.com/search?q="+hashtag);
+  return s.link("http://twitter.com/hashtag/"+hashtag);
  }); 
  return str;
 };
