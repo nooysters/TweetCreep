@@ -5,3 +5,71 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+.navbar-brand {
+  padding:0;
+}
+
+.hidden {
+	display: none;
+}
+.tweet_column {
+	width: 500px;
+	height: 100%;
+	margin:10px auto;
+}
+.tweet {
+	width: 100%;
+	display:inline-block;
+	padding: 3px;
+}
+.tweet_image {
+	float: left;
+	width: 48px;
+	height: 48px;
+	padding: 8px 0 0 5px;
+}
+.tweet_image img {
+	border: none;
+}
+
+.tweet_right {
+  text-align: left;
+	float: right;
+	width: 430px;
+	overflow: hidden;
+	padding-right: 5px;
+}
+.tweet_screen_name a {
+	font-size: 110%;
+	font-weight: bold;
+	text-align:center;
+	color:#2EB2E9;
+	text-decoration: none;
+}
+.tweet_screen_name a:hover {
+	text-decoration: underline;
+}
+.tweet_name {
+	font-size: 100%;
+	color: #808080;
+	padding-left: 10px;
+}
+.tweet_text {
+	font-size: 100%;
+}
+.tweet_text a {
+	text-decoration: none;
+}
+.tweet_text a:hover {
+	text-decoration: underline;
+}
+.tweet_date a {
+	font-size: 80%;
+	color: #808080;
+	margin-top: 2px;
+	float: right;
+	text-decoration: none;
+}
+.tweet_date a:hover {
+	text-decoration: underline;
+}

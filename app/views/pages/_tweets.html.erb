@@ -1,5 +1,27 @@
+<div id="tweet_list"> 
 <% @tweets.each do |tweet| %>
-<div>
-  <%= tweet.text %>
-</div>
+
+  <div class="tweet">
+  <div class="tweet_id hidden"><%= tweet.id %></div>
+  <div class="tweet_image">
+    <a href="<%= tweet.user.url %>" 
+    title="<%= tweet.user.name %>">
+    <img src="<%= tweet.user.profile_image_url %>" width="48" height="48"></a>		
+  </div>
+  <div class="tweet_right">
+    <div class="tweet_screen_name">
+      <a href="<%= tweet.user.url %>" 
+        title="<%= tweet.user.name %>"><s>@</s><b><%= tweet.user.screen_name %></b></a>
+      <span class="tweet_name"><%= tweet.user.name %></b></span>
+    </div>
+    <div class="tweet_text"><%= tweet.text %>
+      <div class="tweet_date">
+        <a href="<%= tweet.url %>" 
+          title="[tweet_display_title]"><%= tweet.created_at.strftime("%m/%d/%Y") %></a>
+      </div>
+    </div>
+  </div>
+</div><hr>
+
 <% end %>
+</div>
