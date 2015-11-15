@@ -4,7 +4,7 @@
     <h3 class="masthead-brand"><%= image_tag 'logo' %>TweetCreep</h3>
     <nav>
       <ul class="nav masthead-nav">
-        <li>Creeping as <%= current_user.email if current_user.exist? %></li>
+        <li>Creeping as <%= current_user.email unless current_user.nil? %></li>
       </ul>
     </nav>
   </div>
