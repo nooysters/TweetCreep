@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
   
   def index 
-    @tweets = get_user_tweets 'nooysters', 25
+    @tweets = {}
   end
   
   def update
@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   private
   
   def pages_params
-    params.permit(:handle)
+    params.require(:handle)
   end
 
 end 

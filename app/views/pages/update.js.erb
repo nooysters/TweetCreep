@@ -1,2 +1,29 @@
-$('#display_tweets').html('<%= escape_javascript(render partial: 'tweets', locals: {tweets: @tweets}) %>');
+$('#display_tweets').slideUp(function(){
+  $('#display_tweets').html('<%= escape_javascript(render partial: 'tweets', locals: {tweets: @tweets}) %>').slideDown();
+  
+  var tweetText = $('.tweet_text');
+  console.log(tweetText);
+  $.each(tweetText, function(i, t){
+    $(t).html(parseTwit($(t).text()));
+  });
+});
 
+
+var parseTwit = function(str)
+{
+ //parse URL
+ str = str.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g,function(s){  
+  return s.link(s);
+ });
+ //parse user_name
+ str = str.replace(/[@]+[A-Za-z0-9_]+/g,function(s){
+  var user_name = s.replace('@','');
+  return s.link("http://twitter.com/"+user_name);
+ });
+ //parse hashtag
+ str = str.replace(/[#]+[A-Za-z0-9_]+/g,function(s){
+  var hashtag = s.replace('#','');
+  return s.link("http://search.twitter.com/search?q="+hashtag);
+ }); 
+ return str;
+};
