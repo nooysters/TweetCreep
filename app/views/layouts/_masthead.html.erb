@@ -1,11 +1,17 @@
-<div class="masthead clearfix">
-  <div class="inner">
-    
-    <h3 class="masthead-brand"><%= image_tag 'logo' %>TweetCreep</h3>
-    <nav>
-      <ul class="nav masthead-nav">
-        <li>Creeping as <%= current_user.email unless current_user.nil? %></li>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="#"><%= image_tag 'logo' %>TweetCreep</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Creeping as <%= current_user.email unless current_user.nil? %></a></li>
       </ul>
-    </nav>
+    </div><!--/.nav-collapse -->
   </div>
-</div>
+</nav>
