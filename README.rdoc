@@ -10,13 +10,15 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
-
+ Be sure to set your twitter credentials in Heroku environment variables.
+ 
 * Database creation
 
 * Database initialization
 
 * How to run the test suite
-
+  To run tests use bundle exec rspec
+  
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
