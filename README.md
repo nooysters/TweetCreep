@@ -36,6 +36,10 @@ heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret 
 ```
 * Add Memcachier addon to your heroku app
 
+```
+heroku addons:create memcachier:dev
+```
+
 * Thats it!
 
 ---
