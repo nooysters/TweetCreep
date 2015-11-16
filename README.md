@@ -35,7 +35,8 @@
 ```
 heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret key] ACCESS_TOKEN=[Your access token] ACCESS_TOKEN_SECRET=[Your token secret]
 ```
-* Set up and configure optional caching backend for Rails.cache
+* Add Memcachier addon to your heroku app
+
 * Thats it!
 
 ---
