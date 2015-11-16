@@ -15,10 +15,9 @@
             title="<%= tweet.user.name %>"><s>@</s><b><%= tweet.user.screen_name %></b></a>
           <span class="tweet_name"><%= tweet.user.name %></b></span>
         </div>
-        <div class="tweet_text"><%= tweet.text %>
+        <div class="tweet_text"><%= parse_twitter tweet.text %>
           <div class="tweet_date">
-            <a href="<%= tweet.url %>" 
-              title="[tweet_display_title]"><%= tweet.created_at.strftime("%m/%d/%Y") %></a>
+            <a href="<%= tweet.url %>"><%= tweet_distance_of_time tweet.created_at %></a>
           </div>
         </div>
       </div>

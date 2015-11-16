@@ -1,32 +1,7 @@
 <% if @tweets %>
 $('#display_tweets').slideUp(function() {
   $('#display_tweets').html('<%= escape_javascript(render partial: 'tweets', locals: {tweets: @tweets}) %>').slideDown();
-  
-  var tweetText = $('.tweet_text');
-
-  $.each(tweetText, function(i, t){
-    $(t).html(parseTweet($(t).text()));
-  });
 });
-
-var parseTweet = function(str) {
- //parse URL
- str = str.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g,function(s){  
-  return s.link(s);
- });
- //parse user_name
- str = str.replace(/[@]+[A-Za-z0-9_]+/g,function(s){
-  var user_name = s.replace('@','');
-  return s.link("http://twitter.com/"+user_name);
- });
- //parse hashtag
- str = str.replace(/[#]+[A-Za-z0-9_]+/g,function(s){
-  var hashtag = s.replace('#','');
-  return s.link("http://twitter.com/hashtag/"+hashtag);
- }); 
- return str;
-};
-
 <% else %>
   $('#display_tweets').html("<div class=\"text-warning\">@<%= @handle %> is not a valid twitter account :(</div>")
 <% end %>

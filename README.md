@@ -6,12 +6,12 @@
 
 
 - Tweet Creep uses the twitter gem to interact with the Twitter API. It will pull the first 25 tweets for a given twitter handle. 
-- The module in **lib/twitter_client.rb** initializes a twitter client and provides a wrapper for the needed api function **Twitter::REST::Client.user_timeline** and handles caching with rails cache.
+- The module in **model/concerns/twitter_client.rb** initializes a twitter client and provides a wrapper for the needed api function **Twitter::REST::Client.user_timeline** and handles caching with rails cache.
 
 - Since the app only does one thing, I chose to keep everything on one page keeping the controller and routes very simple. 
 - The app roots to **pages#index** and will authenticate (through devise) and then provide the twitter handle form.
 - The form submits to the pages#update action via ajax and updates the DOM. 
-- Javascript regular expressions is used to parse the links, hashtags and @mentions in the tweet text.
+- There are formatting helpers that parse the @mentions, hashtags and links in the tweet text. There is also a date formatter
 
 - Devise signup is disabled to prevent new accounts. The login is in the submission email.
 
