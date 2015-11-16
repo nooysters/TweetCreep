@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
   
   def index 
-    
+     @tweets = get_user_tweets "GeorgeTakei"
   end
   
   def update
