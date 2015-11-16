@@ -1,4 +1,6 @@
-![alt text](https://github.com/nooysters/TweetCreep/blob/master/app/assets/images/logo.png) # Tweet Creep ### Twitter tweet viewer.
+![alt text](https://github.com/nooysters/TweetCreep/blob/master/app/assets/images/logo.png) 
+# Tweet Creep 
+### Twitter tweet viewer.
 
 ### How it works.
 
