@@ -30,8 +30,5 @@ heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret 
 
 Thats it!
 
-Create a Readme file within the repository that contains the following:
-Brief walkthrough of app design / choices made
-Local environment setup instructions
-Basic Heroku deployment instructions
-Test suite setup/execution instructions (if applicable)
+<h3>Test</h3>
+bundle exec rspec
