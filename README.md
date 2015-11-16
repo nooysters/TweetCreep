@@ -22,7 +22,7 @@
 * Clone the repository.
 * If not using postgres, replace the postgres line in the gem file and update database.yml to reflect your local database config.
 * run bundle and rake db:migrate.
-* Set twitter credentials either in lib/twitter_client.rb or using .env file for heroku local, or any preferred method of setting environment variables.
+* Set twitter credentials either in modules/concerns/twitter_client.rb or using .env file for heroku local, or any preferred method of setting environment variables.
 
 ---
 
