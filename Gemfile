@@ -40,6 +40,8 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'devise'
 gem 'twitter'
 
+# Use Dalli for Memcached
+gem 'dalli'
 
 
 group :development, :test do

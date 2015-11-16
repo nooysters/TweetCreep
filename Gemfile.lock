@@ -57,6 +57,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    dalli (2.7.4)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   byebug
   coffee-rails (~> 4.1.0)
+  dalli
   devise
   factory_girl_rails
   jbuilder (~> 2.0)

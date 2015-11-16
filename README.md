@@ -1,20 +1,21 @@
 # Tweet Creep  
 ![alt text](https://github.com/nooysters/TweetCreep/blob/master/app/assets/images/logo.png) 
 
-### Twitter tweet viewer.
 
 ### How it works.
 
 
-Tweet Creep uses the rails twitter gem to fetch the last 25 tweets for a given user handle. The module in **lib/twitter_client.rb** initializes a twitter client and provides a wrapper for the needed api function **Twitter::REST::Client.user_timeline** and handles caching with rails cache. The client module approach allows the twitter api functionality to easily be extended and mixed-in anywhere should decide to add features.
+- Tweet Creep uses the twitter gem to interact with the Twitter API. It will pull the first 25 tweets for a given twitter handle. 
+- The module in **lib/twitter_client.rb** initializes a twitter client and provides a wrapper for the needed api function **Twitter::REST::Client.user_timeline** and handles caching with rails cache.
 
+- Since the app only does one thing, I chose to keep everything on one page keeping the controller and routes very simple. 
+- The app roots to **pages#index** and will authenticate (through devise) and then provide the twitter handle form.
+- The form submits to the pages#update action via ajax and updates the DOM. 
+- Javascript regular expressions is used to parse the links, hashtags and @mentions in the tweet text.
 
-Since the app only does one thing, I chose to keep everything on one page keeping the controller and routes very simple. The app roots to **pages#index** and will authenticate (through devise) and then provide the twitter handle form that submits to the update action via ajax and updates the DOM. Javascript regular expressions is used to parse the links, hashtags and @mentions in the tweet text.
+- Devise signup is disabled to prevent new accounts. The login is in the submission email.
 
-
-Devise signup is disabled to prevent new accounts. The login is in the submission email.
-
-You can view and example [here](http://desolate-oasis-3548.herokuapp.com/)
+- You can view and example of the running app [here](http://desolate-oasis-3548.herokuapp.com/)
 
 ---
 
@@ -32,9 +33,10 @@ You can view and example [here](http://desolate-oasis-3548.herokuapp.com/)
 * Set heroku environment variables for your twitter api credentials:
 
 ```
-heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret key] ACCESS_TOKEN=[Your access token] ACCESS_TOKEN_SECRET=[your token secret]
+heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret key] ACCESS_TOKEN=[Your access token] ACCESS_TOKEN_SECRET=[Your token secret]
 ```
-Thats it!
+* Set up and configure optional caching backend for Rails.cache
+* Thats it!
 
 ---
 
