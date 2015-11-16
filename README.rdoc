@@ -1,27 +1,27 @@
 == README
 
-<h1>Tweet Creep</h1>
-<h2>Twitter tweet viewer.</h2>
+#Tweet Creep
+##Twitter tweet viewer.
 
-<h3>How it works.</h3>
+###How it works.
 
-<p> 
+
 Tweet Creep uses the rails twitter library to fetch the last 25 tweets for a give user handle. The module in lib/twitter_client.rb initializes a twitter client and provides a wrapper for the needed api function Twitter::REST::Client.user_timeline and handles caching with rails cache. The client module approach allows the twitter api functionality to easily be extended and mixed-in anywhere should decide to add features.
-</p>
-<p>
-Since the app only does one thing, I chose to keep everything on one page keeping the controller and routes very simple. The app roots to pages#index and will authenticate (through devise) and then provide the twitter handle form that submits to the update action via ajax and updates the DOM. Javascript regular expressions is used to parse the links, hashtags and @mentions in the tweet text.
-</p>
-<p>
-Devise signup is disabled to prevent new accounts. The login is in the submission email.
-</p>
 
-<h3>Local Setup</h3>
+
+Since the app only does one thing, I chose to keep everything on one page keeping the controller and routes very simple. The app roots to pages#index and will authenticate (through devise) and then provide the twitter handle form that submits to the update action via ajax and updates the DOM. Javascript regular expressions is used to parse the links, hashtags and @mentions in the tweet text.
+
+
+Devise signup is disabled to prevent new accounts. The login is in the submission email.
+
+
+###Local Setup
 * Clone the repository.
 * If not using postgres, replace the postgres line in the gem file and update database.yml to reflect your local database config.
 * run bundle and rake db:migrate.
 * Set twitter credentials either in lib/twitter_client.rb or using .env file for heroku local, or any preferred method of setting environment variables.
 
-<h3>Basic Heroku deployment</h3>
+###Basic Heroku deployment
 * Set up locally and run heroku create.
 * Git push heroku master
 * Set heroku environment variables for your twitter api credentials:
@@ -30,5 +30,5 @@ heroku config:set CONSUMER_KEY=[Your consumer key] CONSUMER_SECRET=[Your secret 
 
 Thats it!
 
-<h3>Test</h3>
+###Test
 bundle exec rspec
