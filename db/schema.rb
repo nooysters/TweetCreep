@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112025143) do
+ActiveRecord::Schema.define(version: 20151120224349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "custom_project_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "custom_projects", force: :cascade do |t|
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.integer  "custom_project_type_id"
+    t.text     "description"
+    t.boolean  "agree_to_terms"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -145,6 +166,16 @@ ActiveRecord::Schema.define(version: 20151112025143) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "search_histories", force: :cascade do |t|
+    t.integer  "user_id",        null: false
+    t.string   "twitter_handle"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "users_id"
+  end
+
+  add_index "search_histories", ["users_id"], name: "index_search_histories_on_users_id", using: :btree
 
   create_table "secondary_carousel_items", force: :cascade do |t|
     t.integer  "secondary_carousel_id"
@@ -478,6 +509,8 @@ ActiveRecord::Schema.define(version: 20151112025143) do
     t.integer  "canceler_id"
     t.integer  "store_id"
     t.integer  "state_lock_version",                                         default: 0,       null: false
+    t.integer  "invoice_number"
+    t.date     "invoice_date"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -643,6 +676,7 @@ ActiveRecord::Schema.define(version: 20151112025143) do
     t.string   "meta_title"
     t.boolean  "gift_card",            default: false
     t.integer  "sale_unit_id"
+    t.string   "tax_cloud_tic"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1123,6 +1157,33 @@ ActiveRecord::Schema.define(version: 20151112025143) do
   add_index "spree_tax_categories", ["deleted_at"], name: "index_spree_tax_categories_on_deleted_at", using: :btree
   add_index "spree_tax_categories", ["is_default"], name: "index_spree_tax_categories_on_is_default", using: :btree
 
+  create_table "spree_tax_cloud_cart_items", force: :cascade do |t|
+    t.integer  "index"
+    t.integer  "tic"
+    t.string   "sku"
+    t.integer  "quantity"
+    t.decimal  "price",                    precision: 8,  scale: 2, default: 0.0
+    t.decimal  "amount",                   precision: 13, scale: 5, default: 0.0
+    t.decimal  "ship_total",               precision: 10, scale: 2, default: 0.0
+    t.integer  "line_item_id"
+    t.integer  "tax_cloud_transaction_id"
+    t.string   "type"
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
+  end
+
+  add_index "spree_tax_cloud_cart_items", ["line_item_id"], name: "index_spree_tax_cloud_cart_items_on_line_item_id", using: :btree
+  add_index "spree_tax_cloud_cart_items", ["tax_cloud_transaction_id"], name: "index_spree_tax_cloud_cart_items_on_tax_cloud_transaction_id", using: :btree
+
+  create_table "spree_tax_cloud_transactions", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spree_tax_cloud_transactions", ["order_id"], name: "index_spree_tax_cloud_transactions_on_order_id", using: :btree
+
   create_table "spree_tax_rates", force: :cascade do |t|
     t.decimal  "amount",             precision: 8, scale: 5
     t.integer  "zone_id"
@@ -1323,10 +1384,12 @@ ActiveRecord::Schema.define(version: 20151112025143) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "custom_projects", "custom_project_types"
   add_foreign_key "hero_carousel_items", "hero_carousels"
   add_foreign_key "promo_block_items", "promo_blocks"
   add_foreign_key "promo_strip_items", "promo_strips"
   add_foreign_key "promo_strips", "promo_strip_layouts"
+  add_foreign_key "search_histories", "users"
   add_foreign_key "secondary_carousel_items", "secondary_carousels"
   add_foreign_key "spree_products", "sale_units"
 end

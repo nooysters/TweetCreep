@@ -4,12 +4,15 @@ class PagesController < ApplicationController
   
   def index 
     @tweets = @twitter.get_user_tweets "GeorgeTakei"
+    @user_history =  current_user.searches.all.take(10)
   end
   
   def update
     @handle = params[:handle];
     @tweets = @twitter.get_user_tweets @handle
-   
+
+    current_user.searches.create({twitter_handle: @handle})
+
     respond_to do |format|
       format.js
     end
