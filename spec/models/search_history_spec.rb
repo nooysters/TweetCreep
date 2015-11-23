@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SearchHistory, type: :model do
+
   before :each do
     @search_history = build(:search_history)
   end

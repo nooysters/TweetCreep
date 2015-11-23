@@ -9,8 +9,10 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav pull-right">
         <li>
-          <span style = "color:#fff">Creeping as <%= current_user.email unless current_user.nil? %> 
-          | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></span>
+          <% unless current_user.nil? %>
+            <span style = "color:#fff">Creeping as <%= current_user.email unless current_user.nil? %>
+            | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></span>
+          <% end %>
         </li>
       </ul>
     </div><!--/.nav-collapse -->

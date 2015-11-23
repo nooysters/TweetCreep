@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @handle = params[:handle];
     @tweets = @twitter.get_user_tweets @handle
 
-    current_user.searches.create({twitter_handle: @handle})
+    current_user.searches.create({twitter_handle: @handle}) if @tweets
 
     respond_to do |format|
       format.js

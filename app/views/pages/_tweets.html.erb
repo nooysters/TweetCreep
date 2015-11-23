@@ -1,4 +1,4 @@
-<% unless @tweets.nil? || @tweets.empty? %>
+<% if @tweets %>
 <div id="tweet_list">
 <% @tweets.each do |tweet| %>
   <% if tweet.is_a? Twitter::Tweet %>

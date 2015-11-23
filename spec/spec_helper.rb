@@ -15,6 +15,13 @@
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
+
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
+
+Capybara.default_driver = :webkit
+Capybara::Screenshot.prune_strategy = :keep_last_run
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

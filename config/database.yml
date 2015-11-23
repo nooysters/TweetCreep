@@ -13,7 +13,7 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: dyw_on_rails_dev
+  database: tweet_creep_dev
   pool: 5
   username:
   password:
@@ -24,7 +24,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: dyw_on_rails_test
+  database: tweet_creep_test
   pool: 5
   username: 
   password:
